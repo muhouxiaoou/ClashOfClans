@@ -1,0 +1,4 @@
+ID,Name,UnitOfType,UnitLevel,ExportName,ExportNameNpc,Speed,Hitpoints,AttackRange,AttackSpeed,Damage,DamageRadius,ActiveSkill,AmplifyDamageBuilding,AmplifyDamageBuildingClass,HousingSpace,BaseLevel,LaboratoryLevel,ResurrectionTime,ResurrectionResource,ResurrectionCost,UpgradeTimeH,UpgradeResource,UpgradeCost,IsFlying,AirTargets,GroundTargets,TID,InfoTID,SWF,IconSWF,IconExportName,BigPicture,Projectile,DeployEffect,AttackEffect,HitEffect,DieEffect,Animation,SpawnIdle,MovementOffsetAmount,MovementOffsetSpeed,DieDamageEffect
+1,神射手,2,1,神射手,神射手,2,300,3,5,10,0,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+2,巨人,3,1,巨人,巨人,2.5,100,1.5,10,5,0.5,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3,黄毛,8,1,维京勇士,维京勇士,2.5,100,1.5,10,5,0.5,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

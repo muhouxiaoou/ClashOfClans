@@ -1,0 +1,4 @@
+Id,Name,Type,Kind,Manual,SkillLimit,Skilltime,SummonedUnit,UnitNum,SkillRange,SkillPriceIncrease,SkillDamage,AddAttack,AddSpeed,AddCure,AddAttackRate,DieDamage,DieDamageRange,DieCure,DieCureRadius,SecondaryTroop,SecondaryTroopCnt,SecondarySpawnDist,DieDelay,BuffId
+1,召唤巨人,2,10,0,15,0,3,2,3,,,,,,,,,,,,,,,
+2,多重巨人,2,10,0,10,0,3,4,3,,,,,,,,,,,,,,,
+3,召唤维京人,2,10,0,10,0,3,2,3,,,,,,,,,,,,,,,
