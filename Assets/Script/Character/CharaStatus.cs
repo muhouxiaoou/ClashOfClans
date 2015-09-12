@@ -56,7 +56,10 @@ public class CharaStatus : MonoBehaviour
         int mfps = 10;
         string namePrefix = "";
         bool reverse = false;
-        //if(rotateWeapon)
+        if (rotateWeapon)
+        {
+            CancelInvoke("IdleChange");
+        }
         if (mPose == Pose.Run)
         {
             namePrefix = "walk";
@@ -92,7 +95,8 @@ public class CharaStatus : MonoBehaviour
         {
             if (rotateWeapon)
             {
-
+                InvokeRepeating("IdleChange",0f,1.0f);
+                mfps = 1;
             }
             else
             {
@@ -131,7 +135,7 @@ public class CharaStatus : MonoBehaviour
         {
             if (rotateWeapon)
             {
-
+                //calc in ai
             }
             else
             {
@@ -238,14 +242,44 @@ public class CharaStatus : MonoBehaviour
             Parent.Update();
         }
         //check direction
+        CheckDir();
         //change anim
+        ChangeAnim();
         //change idle
+        ChangeIdle();
     }
 
     void IdleChange()
     {
-        //idleInvInterval=
+        
+        idleInvInterval = Random.Range(-10, 10);
+        idleRotateInterval = Random.Range(5.0f, 10.0f);
     }
+
+    private static float lastTime = Time.realtimeSinceStartup;
+    void ChangeIdle()
+    {
+        if(!rotateWeapon)
+            return;
+        if(CurPose!=Pose.Die)
+            return;
+        if (Time.realtimeSinceStartup > lastTime + idleRotateInterval)
+        {
+            float curDiv = 0.0f;
+            idleRotateAngle = Random.Range(10, 50);
+            if (idleInvInterval>0)
+            {
+                curDiv = idleRotateAngle;
+            }
+            else
+            {
+                curDiv = -1*idleRotateAngle;
+            }
+            gameObject.transform.Rotate(new Vector3(0,curDiv,0));
+            lastTime = Time.realtimeSinceStartup;
+        }
+    }
+
     void CheckDir()
     {
         if (gameObject == null)
@@ -271,21 +305,21 @@ public class CharaStatus : MonoBehaviour
             QuadTexture4Ngui tex = transform.GetChild(0).GetComponent<QuadTexture4Ngui>();
             if ((curAngle >= 0.0f && curAngle <= 151f) || (curAngle > 321.0f))
             {
-                int angle = (int)((curAngle / 10.0f) * 10.0f);
+                int angle = ((int)(curAngle / 10.0f) * 10);
                 tex.mSpriteName = "" + angle;
                 tex.mirrorX = false;
                 tex.InitFace();
             }
             else if (curAngle > 151.0f && curAngle <= 301.0f)
             {
-                int angle = (int)(((301.0f - curAngle) / 10.0f) * 10.0f);
+                int angle = ((int)((301.0f - curAngle) / 10.0f) * 10);
                 tex.mSpriteName = "" + angle;
                 tex.mirrorX = true;
                 tex.InitFace();
             }
             else if (curAngle > 301.0f && curAngle <= 321.0f)
             {
-                int angle = (int)(((661.0f - curAngle) / 10.0f) * 10.0f);
+                int angle = ((int)((661.0f - curAngle) / 10.0f) * 10);
                 tex.mSpriteName = "" + angle;
                 tex.mirrorX = true;
                 tex.InitFace();
